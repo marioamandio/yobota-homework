@@ -6,10 +6,14 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Label
+  Label,
+  ResponsiveContainer
 } from 'recharts'
-
-import { CustomTooltip } from './chartsUtils'
+import {
+  CustomTooltip,
+  StyledChartsDescription,
+  StyledChartsWrapper
+} from './chartsUtils'
 import { formatNumber } from '../utils'
 import { WIDTH, HEIGHT, MARGIN } from './chartsGlobals'
 
@@ -21,33 +25,44 @@ const CustomizedXAxisTick = ({ x, y, payload }) => (
   </g>
 )
 
-export default ({ data }) => (
-  <BarChart
-    width={WIDTH}
-    height={HEIGHT}
-    data={data.records}
-    barCategoryGap={0}
-    margin={MARGIN}
-  >
-    <CartesianGrid strokeDasharray='2 2' />
-    <XAxis
-      dataKey='maxBinExperience'
-      type='category'
-      tick={<CustomizedXAxisTick />}
-      tickSize={0}
-    >
-      <Label value={'years of experience'} position='insideBottom' />
-    </XAxis>
+export default ({ data }) => {
+  console.log(data)
+  return (
+    <StyledChartsWrapper>
+      <StyledChartsDescription>
+        Distribution of records by years of Experience where age, salary and
+        years of experience are provided
+      </StyledChartsDescription>
+      <ResponsiveContainer width={'100%'} height={HEIGHT}>
+        <BarChart
+          width={WIDTH}
+          height={HEIGHT}
+          data={data.records}
+          barCategoryGap={0}
+          margin={MARGIN}
+        >
+          <CartesianGrid strokeDasharray='2 2' />
+          <XAxis
+            dataKey='maxBinExperience'
+            type='category'
+            tick={<CustomizedXAxisTick />}
+            tickSize={0}
+          >
+            <Label value={'years of experience'} position='insideBottom' />
+          </XAxis>
 
-    <YAxis tickFormatter={f => formatNumber(f)}>
-      <Label
-        value={'% of records by experience'}
-        angle={-90}
-        position='insideBottomLeft'
-      />
-    </YAxis>
-    <Tooltip content={<CustomTooltip />} />
+          <YAxis tickFormatter={f => formatNumber(f)}>
+            <Label
+              value={'% of records by experience'}
+              angle={-90}
+              position='insideBottomLeft'
+            />
+          </YAxis>
+          <Tooltip content={<CustomTooltip />} />
 
-    <Bar dataKey='percentageOfRecords' fill='#8884d8' />
-  </BarChart>
-)
+          <Bar dataKey='percentageOfRecords' fill='#8884d8' />
+        </BarChart>
+      </ResponsiveContainer>
+    </StyledChartsWrapper>
+  )
+}

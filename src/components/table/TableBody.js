@@ -19,7 +19,7 @@ export default ({ data, dataFields, sortedBy, sortData, sortDirection }) => {
   }
 
   const headerRenderer = ({ label, dataKey }) => (
-    <div css={css``}>
+    <div>
       {formatString(label)}
       {dataKey === sortedBy && (
         <Icon name={`angle ${sortDirection === 'ASC' ? 'up' : 'down'}`} />

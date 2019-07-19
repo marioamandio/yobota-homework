@@ -19,13 +19,14 @@ const Header = styled.div`
   justify-content: center;
 `
 
-const App = ({ requestData, error, loading }) => {
+const App = ({ requestData, error, loading, isData }) => {
   const [renderedComponent, setRenderedComponent] = useState('table')
 
   useEffect(() => {
     requestData()
   }, [])
 
+  console.log(isData)
   return (
     <AppWrapper>
       <Header>
@@ -51,7 +52,7 @@ const App = ({ requestData, error, loading }) => {
       {error && <p>something went wrong!</p>}
 
       {!error && loading && <Loader />}
-      {!error && !loading && renderedComponent === 'table' ? (
+      {!error && !loading && isData && renderedComponent === 'table' ? (
         <Table />
       ) : (
         <Charts />
@@ -62,7 +63,8 @@ const App = ({ requestData, error, loading }) => {
 
 const mapStateToProps = state => ({
   error: getDataError(state.data),
-  loading: getDataLoading(state.data)
+  loading: getDataLoading(state.data),
+  isData: !!state.data.data.length
 })
 
 const mapDispatchToProps = dispatch => ({

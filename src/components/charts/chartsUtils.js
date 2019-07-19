@@ -46,3 +46,13 @@ export const CustomTooltip = props => {
 
   return null
 }
+
+export const StyledChartsDescription = styled.h3`
+  text-align: center;
+  width: 600px;
+  margin: 10px auto;
+`
+
+export const StyledChartsWrapper = styled.div`
+  padding-top: 40px;
+`

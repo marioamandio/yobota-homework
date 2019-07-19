@@ -2,6 +2,7 @@ import { getDataFields } from './data'
 import { formatString } from '../components/utils'
 import moment from 'moment'
 
+//get number of nullable fields
 export const getBarChartData = ({ data }) => {
   const fields = getDataFields({ data })
 
@@ -26,6 +27,7 @@ export const getBarChartData = ({ data }) => {
   return []
 }
 
+//return all the
 export const getLineChartData = ({ data }) => {
   if (data) {
     return data
@@ -43,7 +45,7 @@ export const getLineChartData = ({ data }) => {
   return []
 }
 
-export const getHistogramChartData = ({ data }) => {
+export const getStatsData = ({ data }) => {
   if (data) {
     let maxYearsOfExperience
     let bins = []
@@ -85,6 +87,7 @@ export const getHistogramChartData = ({ data }) => {
         maxBinExperience: i + 1
       }
     }
+
     return {
       records,
       higherSalary,

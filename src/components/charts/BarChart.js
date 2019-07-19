@@ -1,8 +1,20 @@
 import React from 'react'
-import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar } from 'recharts'
-import { Header } from 'semantic-ui-react'
-import { WIDTH, HEIGHT, MARGIN } from './chartsGlobals'
-import { StyledTootip, TooltipParagraph } from './chartsUtils'
+import {
+  ResponsiveContainer,
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Bar
+} from 'recharts'
+import { HEIGHT, MARGIN } from './chartsGlobals'
+import {
+  StyledTootip,
+  TooltipParagraph,
+  StyledChartsDescription,
+  StyledChartsWrapper
+} from './chartsUtils'
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active) {
@@ -17,17 +29,19 @@ const CustomTooltip = ({ active, payload, label }) => {
 }
 
 export default ({ data }) => (
-  <div>
-    <Header as='h3' textAlign='left'>
-      Bar chart representing the amount of missing fields by whole set of data
-      provided
-    </Header>
-    <BarChart width={WIDTH} height={HEIGHT} margin={MARGIN} data={data}>
-      <CartesianGrid strokeDasharray='3 3' />
-      <XAxis dataKey='key' />
-      <YAxis />
-      <Tooltip content={CustomTooltip} />
-      <Bar dataKey='value' fill='#8884d8' />
-    </BarChart>
-  </div>
+  <StyledChartsWrapper>
+    <StyledChartsDescription>
+      Bar chart representing the amount of missing fields for the whole set of
+      data provided
+    </StyledChartsDescription>
+    <ResponsiveContainer width='100%' height={HEIGHT}>
+      <BarChart margin={MARGIN} data={data}>
+        <CartesianGrid strokeDasharray='3 3' />
+        <XAxis dataKey='key' />
+        <YAxis />
+        <Tooltip content={CustomTooltip} />
+        <Bar dataKey='value' fill='#8884d8' />
+      </BarChart>
+    </ResponsiveContainer>
+  </StyledChartsWrapper>
 )
