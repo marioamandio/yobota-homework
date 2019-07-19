@@ -18,7 +18,7 @@ import { formatNumber } from '../utils'
 import { WIDTH, HEIGHT, MARGIN } from './chartsGlobals'
 
 const CustomizedXAxisTick = ({ x, y, payload }) => (
-  <g transform={`translate(${x + WIDTH / 22},${y - 4})`}>
+  <g transform={`translate(${x + WIDTH / 12},${y - 4})`}>
     <text x={0} y={0} dy={16} textAnchor='start' fill='#666'>
       {payload.value}
     </text>
