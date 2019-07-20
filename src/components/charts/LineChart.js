@@ -28,12 +28,12 @@ const CustomTooltip = ({ active, payload, label }) => {
           <TooltipParagraph label={`Date of Birth`} value={label} />
           <TooltipParagraph
             label={formatString(payload[0].dataKey)}
-            value={formatNumber(payload[0].value)}
+            value={payload[0].value}
           />
 
           <TooltipParagraph
             label={formatString(payload[1].dataKey)}
-            value={payload[1].value}
+            value={formatNumber(payload[1].value)}
           />
         </>
       </StyledTootip>

@@ -8,6 +8,8 @@ In the project directory, you can run:
 
 Initialize the json-server that's been served on [http://localhost:4000](http://localhost:4000)
 
+and then open a new tab to run
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
